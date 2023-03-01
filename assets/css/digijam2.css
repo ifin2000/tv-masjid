@@ -1,0 +1,44 @@
+#jam-digital {
+    overflow: hidden;
+    width: 250px;
+    margin: 0 auto;
+}
+
+#hours {
+    float: left;
+    width: 80px;
+    height: 50px;
+    color: white;
+    background-color: #190a6e;
+    margin-right: 5px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+#minute {
+    float: left;
+    width: 80px;
+    height: 50px;
+    color: white;
+    background-color: #190a6e;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+#second {
+    float: right;
+    width: 80px;
+    height: 50px;
+    color: white;
+    background-color: #190a6e;
+    margin-left: 5px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+#jam-digital p {
+    color: #FFF;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 4px
+}
