@@ -12,12 +12,17 @@ menampilkan jadwal sholat, jadwal khotib, jadwal imam, kajian rutin serta hadits
 - Motivasi Ayat Al Qur'an & Al Hadits
 - Running Text (khusus halaman-1)
 
-Untuk semua jadwal (kecuali Jadwal Sholat) diambil dari database db_simasjid --> cek https://github.com/ifin2000/simasjid
+Pengaturan tampilan di TV android dilakukan lewat aplikasi SIMASJID [ https://github.com/ifin2000/simasjid ]  
+lewat menu : Setting Umum -> Setup Tampilan TV  
+Pengaturan yg bisa dilakukan antara lain :  
+- Nama, Alamat dan Rekening Masjid
+- Jeda waktu perpindahan antar halaman
+- Jeda waktu antara Adzan dengan Iqomah
+- Penggantian gambar latar belakang untuk halaman 1
+- Setup Awal Ramadhan (untuk Count-Down awal Ramadhan)
+- Setting halaman mana saja yg ditampilkan dan mana yg tidak perlu  
 
-Untuk saat ini setting lama waktu perpindahan (... detik) antar halaman harus diubah manual lewat script,  
-mohon doanya diberikan kemudahan, kesehatan dan kesempatan untuk menyelesaikan update script agar semua setting bisa lewat form)
-
-source code adalah tampilan web, diakses lewat browser, sehingga perlu diinstal browser dahulu di TV Android
+Aplikasi ini adalah berbasis web, diakses lewat browser, sehingga perlu diinstal browser dahulu di TV Android  
 (aslinya saya pakai aplikasi Android dgn webview yg mengakses langsung ke webbased ini)
 
 **CATATAN :**  
@@ -26,6 +31,8 @@ Jangan anggap resolusi TV Android lebih tinggi dari komputer/laptop,
 Sehingga perlu penyesuaian terhadap tampilan browser agar terlihat bagus di monitor TV Android.  
 
 ![image](https://user-images.githubusercontent.com/7757976/222020955-d8aed4b3-40ae-4f17-b34d-746807a6c1fa.png)
+
+![image](https://user-images.githubusercontent.com/7757976/222383143-d915276a-3a89-41e3-b50d-2b1a2efb86fb.png)
 
 ![image](https://user-images.githubusercontent.com/7757976/222021636-b68e6c9e-446b-4a10-a621-27bbe3cc866b.png)
 
