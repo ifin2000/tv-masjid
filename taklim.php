@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Smart TV Masjid Al Madinah Al Munawwaroh</title>
+    <title>Smart TV :: SIMASJID</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Smart TV Application for Masjid Masjid Al Madinah Al Munawwaroh" />
-    <meta name="keywords" content="Smart TV for Masjid Masjid Al Madinah Al Munawwaroh">
+    <meta name="description" content="Smart TV Application for Masjid :: SIMASJID" />
+    <meta name="keywords" content="Smart TV for Masjid :: SIMASJID">
     <meta name="author" content="M. Syamsul Arifin & Team" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -107,6 +107,12 @@ function tgl_indo($tanggal){
  $pecahkan = explode('-', $tanggal);
  return $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2];
 }
+$reserzz = mysqli_query($koneksi, "select nama,alamat,telp from organisasi");
+$setid = mysqli_fetch_array($reserzz);
+$resolzz = mysqli_query($koneksi, "select jeda_page from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
+// lokasi photo ustadz
+$folder_photo = "../simasjid/incl/assets/images/ustadz/";
 ?>
 
     <body class="" onload="pindah()">
@@ -122,8 +128,8 @@ function tgl_indo($tanggal){
                     <div class="col-sm-12" style="height:80px">
                         <div class="card bg-c-red text-white widget-visitor-card">
                             <div class="card-body text-center" style="margin-bottom: -15px;margin-top: -5px;">
-                                <h4 class="text-white" style="margin-top: -10px;">MASJID AL-MADINAH AL-MUNAWWAROH</h4>
-                                <h6 class="text-white">Perumahan Bukit Putra Blok E2 no.1, Situsari, Cileungsi, Kabupaten Bogor.</h6>
+                                <h4 class="text-white" style="margin-top: -10px;"><?php echo strtoupper($setid["nama"]); ?></h4>
+                                <h6 class="text-white"><?php echo $setid["alamat"]. ", Telp: ". $setid["telp"]; ?></h6>
                                 <i class="fas fa-mosque"></i>
                             </div>
                         </div>
@@ -150,7 +156,7 @@ function tgl_indo($tanggal){
 										<td><h5 class="m-b-0">Ahad ke-1</h5></td>
 										<td><?php echo $minggu[1]; ?></td>
 										<td><div class="d-inline-block align-middle">
-												<img src="assets/images/khusus/<?php echo $gambar[1]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
+												<img src="<?php echo $folder_photo.$gambar[1]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
 												<div class="d-inline-block">
 													<h5 class="m-b-0">Ust.<?php echo $ustadz[1]; ?></h5>
 													<p class="m-b-0">Tema : <?php echo $tema[1]; ?></p>
@@ -162,7 +168,7 @@ function tgl_indo($tanggal){
 										<td><h5 class="m-b-0">Ahad ke-2</h5></td>
 										<td><?php echo $minggu[2]; ?></td>
 										<td><div class="d-inline-block align-middle">
-                                        <img src="assets/images/khusus/<?php echo $gambar[2]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
+                                        <img src="<?php echo $folder_photo.$gambar[2]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
 												<div class="d-inline-block">
 													<h5 class="m-b-0">Ust.<?php echo $ustadz[2]; ?></h5>
 													<p class="m-b-0">Tema : <?php echo $tema[2]; ?></p>
@@ -174,7 +180,7 @@ function tgl_indo($tanggal){
 										<td><h5 class="m-b-0">Ahad ke-3</h5></td>
 										<td><?php echo $minggu[3]; ?></td>
 										<td><div class="d-inline-block align-middle">
-                                        <img src="assets/images/khusus/<?php echo $gambar[3]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
+                                        <img src="<?php echo $folder_photo.$gambar[3]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
 												<div class="d-inline-block">
 													<h5 class="m-b-0">Ust.<?php echo $ustadz[3]; ?></h5>
 													<p class="m-b-0">Tema : <?php echo $tema[3]; ?></p>
@@ -186,7 +192,7 @@ function tgl_indo($tanggal){
 										<td><h5 class="m-b-0">Ahad ke-4</h5></td>
 										<td><?php echo $minggu[4]; ?></td>
 										<td><div class="d-inline-block align-middle">
-                                        <img src="assets/images/khusus/<?php echo $gambar[4]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
+                                        <img src="<?php echo $folder_photo.$gambar[4]; ?>" alt="user image" class="img-radius align-top m-r-15" style="width:40px; height:40px;">
 												<div class="d-inline-block">
 													<h5 class="m-b-0">Ust.<?php echo $ustadz[4]; ?></h5>
 													<p class="m-b-0">Tema : <?php echo $tema[4]; ?></p>
@@ -226,7 +232,7 @@ function tgl_indo($tanggal){
 
         <script type="text/javascript">
             function pindah(){
-                setTimeout(function(){ window.location.href = 'motivasi2.php?saat=<?php echo $waktu; ?>'; }, 20000); // pindah page stlh 30 detik
+                setTimeout(function(){ window.location.href = 'motivasi2.php?saat=<?php echo $waktu; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page stlh 30 detik
             }
         </script>
 

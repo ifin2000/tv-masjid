@@ -56,6 +56,13 @@
 <?php
 $waktu = $_GET['saat'];
 date_default_timezone_set('Asia/Jakarta');
+// akses setting tv
+require_once '../koneksi.php';
+$resolzz = mysqli_query($koneksi, "select jeda_page,awal_ramadhan from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
+$rmd = explode(" ", $setup['awal_ramadhan']);
+$tglrmd = explode("-", $rmd[0]);
+$wktrmd = explode(":", $rmd[1]);
 ?>
 
     <div class="bg-img1 size1 overlay1" style="background-image: url('images/bg01.jpg');">
@@ -90,7 +97,7 @@ date_default_timezone_set('Asia/Jakarta');
                 </p>
 
                 <p class="txt-center m1-txt1 p-t-1" style="font-size: 20px; color: white;">
-                    [penetapan 1 Ramadhan 1442H menunggu keputusan Pemerintah]
+                    [penetapan 1 Ramadhan 1444H menunggu keputusan Pemerintah]
                 </p>
             </div>
 
@@ -111,17 +118,14 @@ date_default_timezone_set('Asia/Jakarta');
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <script>
         $('.cd100').countdown100({
-            /*Set Endtime here*/
-            /*Endtime must be > current time*/
-            endtimeYear: 2023,
-            endtimeMonth: 3,
-            endtimeDate: 23,
-            endtimeHours: 18,
-            endtimeMinutes: 05,
-            endtimeSeconds: 0,
+            /*Set AWAL RAMADHAN here - Endtime must be > current time*/           
+            endtimeYear: <?php echo $tglrmd[0]; ?>,  // tahun
+            endtimeMonth: <?php echo $tglrmd[1]; ?>,    // bulan
+            endtimeDate: <?php echo $tglrmd[2]; ?>,    // tanggal
+            endtimeHours: <?php echo $wktrmd[0]; ?>,   // jam
+            endtimeMinutes: <?php echo $wktrmd[1]; ?>, // menit
+            endtimeSeconds: <?php echo $wktrmd[2]; ?>,  // detik
             timeZone: "Asia/Jakarta"
-                // ex:  timeZone: "America/New_York"
-                //go to " http://momentjs.com/timezone/ " to get timezone
         });
     </script>
     <!--===============================================================================================-->
@@ -149,7 +153,7 @@ date_default_timezone_set('Asia/Jakarta');
             pindah();
         }
         function pindah(){
-            setTimeout(function(){ window.location.href = '../motivasi1.php?saat=<?php echo $waktu; ?>'; }, 15000); // pindah page stlh 60 dtk x 15 = 15 menit
+            setTimeout(function(){ window.location.href = '../motivasi1.php?saat=<?php echo $waktu; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page stlh 60 dtk x 15 = 15 menit
         }
     </script>
 

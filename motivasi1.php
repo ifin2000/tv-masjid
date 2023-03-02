@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Smart TV Masjid Al Madinah Al Munawwaroh</title>
+    <title>Smart TV :: SIMASJID</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Smart TV Application for Masjid Masjid Al Madinah Al Munawwaroh" />
-    <meta name="keywords" content="Smart TV for Masjid Masjid Al Madinah Al Munawwaroh">
+    <meta name="description" content="Smart TV Application for Masjid :: SIMASJID" />
+    <meta name="keywords" content="Smart TV for Masjid :: SIMASJID">
     <meta name="author" content="M. Syamsul Arifin & Team" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -121,6 +121,10 @@ if ($namahari=='Friday'){
     $teksid = $row['konten'];
     $sumber = $row['sumber'];
 }
+$resolzz = mysqli_query($koneksi, "select jeda_page from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
+$reserzz = mysqli_query($koneksi, "select bank,norek,anrek from organisasi");
+$raw = mysqli_fetch_array($reserzz);
 ?>
 
     <body class="" onload="pindah();waktu();">
@@ -144,7 +148,7 @@ if ($namahari=='Friday'){
                         <p class=""><h2 class="font-effect-3d-float">
                         <span style="color:white; font-size:27px;">Salah satu amalan yg pahalanya terus mengalir setelah kita meninggal adalah berinfaq untuk Masjid.<br><br>Salurkan donasi Anda melalui :</span>
                         </h2></p>
-                        <p class=""><h4><span style="color:yellow; font-size:30px; -webkit-text-stroke: 1px #1c6d06;">Rekening Yayasan Masjid : <br>Bank BSI no.rek: 99-1717-555-9<br>a/n Yys Masjid Al Madinatul Munawwaroh</span></h4></p>
+                        <p class=""><h4><span style="color:yellow; font-size:30px; -webkit-text-stroke: 1px #1c6d06;">Rekening <br><?php echo $raw["bank"]." no.".$raw["norek"]."<br>a/n ".$raw["anrek"]; ?></span></h4></p>
 				    </div>
                     
 
@@ -152,9 +156,9 @@ if ($namahari=='Friday'){
 
         <script type="text/javascript">
             function pindah(){
-                setTimeout(function(){ window.location.href = 'taklim.php?saat=<?php echo $waktu; ?>'; }, 20000); // pindah page stlh 60 detik
-                //setTimeout(function(){ window.location.href = 'jumatan.php?saat=<?php echo $waktu; ?>'; }, 30000);
-                //setTimeout(function(){ window.location.href = 'index.php'; }, 30000);
+                setTimeout(function(){ window.location.href = 'taklim.php?saat=<?php echo $waktu; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page stlh 60 detik
+                //setTimeout(function(){ window.location.href = 'jumatan.php?saat=<?php echo $waktu; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>);
+                //setTimeout(function(){ window.location.href = 'index.php'; }, <?php echo $setup['jeda_page'] * 1000; ?>);
             }
         </script>
 

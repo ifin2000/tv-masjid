@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Smart TV Masjid Al Madinah Al Munawwaroh</title>
+    <title>Smart TV Masjid :: SIMASJID</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Smart TV Application for Masjid Masjid Al Madinah Al Munawwaroh" />
-    <meta name="keywords" content="Smart TV for Masjid Masjid Al Madinah Al Munawwaroh">
+    <meta name="description" content="Smart TV Application for Masjid :: SIMASJID" />
+    <meta name="keywords" content="Smart TV for Masjid :: SIMASJID">
     <meta name="author" content="M. Syamsul Arifin & Team" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -40,6 +40,8 @@ while ($row = mysqli_fetch_array($result)){
     $hari[$no] = $row['hari'];
     $no++;
 }
+$resolzz = mysqli_query($koneksi, "select jeda_page from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
 ?>
 
     <body class="" onload="pindah()">
@@ -61,13 +63,10 @@ while ($row = mysqli_fetch_array($result)){
                             </div>
                         </div>
                     </div>
-                    -->
-
-					<!--<div class="col-sm-12" style="height:60px">
+                    <div class="col-sm-12" style="height:60px">
                         <div class="card bg-c-green text-white widget-visitor-card">
                             <div class="card-body text-center" style="margin-bottom: -15px;margin-top: -5px;">
                                 <h4 class="text-white" style="margin-top: -5px;">JADWAL IMAM ROWATIB</h4>
-                                
                             </div>
                         </div>
                     </div>-->
@@ -214,7 +213,7 @@ while ($row = mysqli_fetch_array($result)){
 
         <script type="text/javascript">
             function pindah(){
-                setTimeout(function(){ window.location.href = 'motivasi1.php?saat=<?php echo $waktu; ?>'; }, 20000); // pindah page stlh 30 detik
+                setTimeout(function(){ window.location.href = 'motivasi1.php?saat=<?php echo $waktu; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page stlh 30 detik
             }
         </script>
 

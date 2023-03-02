@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Smart TV Masjid Al Madinah Al Munawwaroh</title>
+    <title>Smart TV Masjid :: SIMASJID</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Smart TV Application for Masjid Masjid Al Madinah Al Munawwaroh" />
-    <meta name="keywords" content="Smart TV for Masjid Masjid Al Madinah Al Munawwaroh">
+    <meta name="description" content="Smart TV Application for Masjid :: SIMASJID" />
+    <meta name="keywords" content="Smart TV for Masjid :: SIMASJID">
     <meta name="author" content="M. Syamsul Arifin & Team" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -42,12 +42,18 @@
 </head>
 
 <?php
+// akses setting tv
+require_once 'koneksi.php';
+$result = mysqli_query($koneksi, "select id,nama,alamat,telp,bank,norek,anrek from organisasi");
+$row = mysqli_fetch_array($result);
+$resolzz = mysqli_query($koneksi, "select jeda_page,bg_image_cover,awal_ramadhan from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
 // GET FROM API
 date_default_timezone_set('Asia/Jakarta');
 $thn = date('Y');
 $bln = date('m');
 $tgl = date('d');
-$url = 'https://api.myquran.com/v1/sholat/jadwal/1204/'.$thn.'/'.$bln.'/'.$tgl;     // 1204: kode kab.bogor -> sumber API https://documenter.getpostman.com/view/841292/Tz5p7yHS#intro
+$url = 'https://api.myquran.com/v1/sholat/jadwal/'.$row['id'].'/'.$thn.'/'.$bln.'/'.$tgl;     // $row['id']: kode kab/kota -> sumber API https://documenter.getpostman.com/view/841292/Tz5p7yHS#intro
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HTTPGET, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -99,7 +105,7 @@ if (($saatsekarang > $saatisya) && ($saatsekarang < $saatshubuh)){
             <div class="pcoded-content">
 
                 <div>
-				    <img class="img-fluid" src="assets/images/khusus/masjid-almadinah2.jpg" alt="Card image" style="opacity: 0.9; height: 100%; width:200%; left:-50px">
+				    <img class="img-fluid" src="../simasjid/incl/assets/images/<?php echo $setup['bg_image_cover']; ?>" alt="Card image" style="opacity: 0.9; height: 100%; width:200%; left:-50px">
 				</div>
 
                 <!-- [ Main Content ] start -->
@@ -109,8 +115,8 @@ if (($saatsekarang > $saatisya) && ($saatsekarang < $saatshubuh)){
                     <div class="col-sm-12" style="height:80px">
                         <div class="card bg-c-red text-white widget-visitor-card">
                             <div class="card-body text-center" style="margin-bottom: -15px;margin-top: -5px;">
-                                <h4 class="text-white" style="margin-top: -10px;">MASJID AL-MADINAH AL-MUNAWWAROH</h4>
-                                <h6 class="text-white">Perumahan Bukit Putra Blok E2 no.1, Situsari, Cileungsi, Kabupaten Bogor.</h6>
+                                <h4 class="text-white" style="margin-top: -10px;"><?php echo strtoupper($row["nama"]); ?></h4>
+                                <h6 class="text-white"><?php echo $row["alamat"]. ", Telp: ". $row["telp"]; ?></h6>
                                 <i class="fas fa-mosque"></i>
                             </div>
                         </div>
@@ -243,7 +249,7 @@ if (($saatsekarang > $saatisya) && ($saatsekarang < $saatshubuh)){
                                         <div class="col-xs-12 col-sm-12">
                                             <div class="card bg-dark rounded-0 shadow-none">
                                                 <div class="card-body d-flex justify-content-between align-items-center">
-                                                    <span class="text-white d-flex justify-content-center align-items-center">infaq/sodaqoh silahkan transfer ke >> Bank Syariah Indonesia no.99-1717-555-9 a/n Yys Masjid Al Madinatul Munawwaroh</span>
+                                                    <span class="text-white d-flex justify-content-center align-items-center">infaq/sodaqoh silahkan transfer ke >> <?php echo $row["bank"]." no.".$row["norek"]." a/n ".$row["anrek"]; ?></span>
                                                     <h6 class="badge badge-light-primary float-rightd-inline-block m-0"></h6>
                                                 </div>
                                             </div>
@@ -321,6 +327,7 @@ if (($saatsekarang > $saatisya) && ($saatsekarang < $saatshubuh)){
         
             function pindah(){
                 var countDownDate = new Date("<?php echo $pakai; ?>").getTime();
+                var ramadhan = new Date('<?php echo $setup["awal_ramadhan"]; ?>');     // awal ramadhan
                 // Update the count down every 1 second
                 var x = setInterval(function() {
                   var now = new Date().getTime();
@@ -332,8 +339,6 @@ if (($saatsekarang > $saatisya) && ($saatsekarang < $saatshubuh)){
                   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                  var ramadhan = new Date('2023-03-23 18:05:00');     // awal ramadhan
-
                   document.getElementById("countdown").innerHTML = " "+ hours + " jam " + minutes + " mnt " + seconds + " dtk menuju waktu <?php echo $skrg; ?>";
                   if (distance <= 0) {
                     clearInterval(x);
@@ -341,12 +346,11 @@ if (($saatsekarang > $saatisya) && ($saatsekarang < $saatshubuh)){
                   } else if ((hours==0) && (minutes<=8)) {
                     // tetap di tampilan jam saat kurang dari 8 menit menuju awal waktu sholat
                   } else {
-                    //setTimeout(function(){ window.location.href = 'jadwalimam.php?saat=<?php echo $skrg; ?>'; }, 30000); // pindah page jadwal imam
-                    //setTimeout(function(){ window.location.href = 'kajianumum.php?saat=<?php echo $skrg; ?>'; }, 60000); // pindah page kajian umum/PHBI
+                    //setTimeout(function(){ window.location.href = 'jadwalimam.php?saat=<?php echo $skrg; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page jadwal imam
                     if (now >= ramadhan){
-                        setTimeout(function(){ window.location.href = 'ramadhan/akhirnya.php?saat=<?php echo $skrg; ?>'; }, 60000); // pindah page awal ramadhan
+                        setTimeout(function(){ window.location.href = 'kajianumum.php?saat=<?php echo $skrg; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page awal ramadhan
                     } else {
-                        setTimeout(function(){ window.location.href = 'ramadhan/index.php?saat=<?php echo $skrg; ?>'; }, 30000); // pindah page count-down ramadhan
+                        setTimeout(function(){ window.location.href = 'ramadhan/index.php?saat=<?php echo $skrg; ?>'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page count-down ramadhan
                     }
                   }
                 }, 1000);

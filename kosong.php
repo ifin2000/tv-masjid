@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Smart TV Masjid Al Madinah Al Munawwaroh</title>
+    <title>Smart TV :: SIMASJID</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Smart TV Application for Masjid Masjid Al Madinah Al Munawwaroh" />
-    <meta name="keywords" content="Smart TV for Masjid Masjid Al Madinah Al Munawwaroh">
+    <meta name="description" content="Smart TV Application for Masjid :: SIMASJID" />
+    <meta name="keywords" content="Smart TV for Masjid :: SIMASJID">
     <meta name="author" content="M. Syamsul Arifin & Team" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -82,6 +82,10 @@
 
 <?php
 require_once 'koneksi.php';
+$resolzz = mysqli_query($koneksi, "select jeda_iqomat from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
+$jedaiqomah = $setup["jeda_iqomat"];
+// hitung waktu sholat
 $waktu = $_GET['saat'];
 date_default_timezone_set('Asia/Jakarta');
 $tanggal = date("Y-m-d H:i:s");
@@ -89,17 +93,13 @@ $namahari = date('l', strtotime($tanggal));
 if ($namahari=='Friday'){
     if ($waktu=='dhuhur'){
         $inijumatan = 1;
-        //$waktu = "JUMAT";
-        //$jedajumatan = 2600000;    // 60x45 = 40 menit !
         $sqx = "select konten,sumber from hadits_jumat where catatan='jeda' and id='10'";
         $jedaiqomah = 2200;
         $showIqomah = 0;
     } else {
         $inijumatan = 0;
-        //$waktu = $waktu;
-        //$jedajumatan = 900000;    // 60x15 = 15 menit !
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='17'";
-        $jedaiqomah = 650;
+        //$jedaiqomah = 650;
         $showIqomah = 1;
     }
     $result = mysqli_query($koneksi,$sqx);
@@ -114,29 +114,28 @@ if ($namahari=='Friday'){
 } else {
     $inijumatan = 0;
     $waktu = $waktu;
-    //$jedajumatan = 900000;      // 60x15 = 15 menit
     if ($waktu=='shubuh'){
-        $jedaiqomah = 800;
+        //$jedaiqomah = 800;
         $showIqomah = 1;
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='14'";
     } else if ($waktu=='ashar') {
-        $jedaiqomah = 650;
+        //$jedaiqomah = 650;
         $showIqomah = 1;
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='17'";
     } else if ($waktu=='isya') {
-        $jedaiqomah = 650;
+        //$jedaiqomah = 650;
         $showIqomah = 1;
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='19'";
     } else if ($waktu=='dhuhur') {
-        $jedaiqomah = 650;
+        //$jedaiqomah = 650;
         $showIqomah = 1;
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='14'";
     } else if ($waktu=='maghrib') {
-        $jedaiqomah = 650;
+        //$jedaiqomah = 650;
         $showIqomah = 1;
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='17'";
     } else {
-        $jedaiqomah = 650;
+        //$jedaiqomah = 650;
         $showIqomah = 1;
         $sqx = "select konten,sumber from motivasi2 where catatan='jeda' and id='17'";
     }
@@ -157,7 +156,7 @@ if ($namahari=='Friday'){
         $sqz = "select imam,cadangan from imam_rowatib where hari='Rabu'";
     } elseif ($namahari=='Thursday'){
         $sqz = "select imam,cadangan from imam_rowatib where hari='Kamis'";
-    }     
+    }
     $resalt = mysqli_query($koneksi,$sqz);
     $raw = mysqli_fetch_array($resalt);
     $imam = $raw['imam'];
@@ -191,7 +190,6 @@ $iqomah = date('Y-m-d H:i:s', time() + $jedaiqomah);
                 pindah();
             }
             function pindah(){
-                //var countDownDate = new Date("2021-03-11 17:46:25").getTime();
                 var countDownDate = new Date("<?php echo $iqomah; ?>").getTime();
                 // Update the count down every 1 second
                 var x = setInterval(function() {

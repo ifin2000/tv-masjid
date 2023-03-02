@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Smart TV Masjid Al Madinah Al Munawwaroh</title>
+    <title>Smart TV :: SIMASJID</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Smart TV Application for Masjid Masjid Al Madinah Al Munawwaroh" />
-    <meta name="keywords" content="Smart TV for Masjid Masjid Al Madinah Al Munawwaroh">
+    <meta name="description" content="Smart TV Application for Masjid :: SIMASJID" />
+    <meta name="keywords" content="Smart TV for Masjid :: SIMASJID">
     <meta name="author" content="M. Syamsul Arifin & Team" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -127,6 +127,8 @@ if ($namahari=='Friday'){
     $teksid = $row['konten'];
     $sumber = $row['sumber'];
 }
+$resolzz = mysqli_query($koneksi, "select jeda_page from setup_tv");
+$setup = mysqli_fetch_array($resolzz);
 ?>
 
     <body class="" onload="pindah();waktu();">
@@ -153,7 +155,7 @@ if ($namahari=='Friday'){
 
         <script type="text/javascript">
             function pindah(){
-                setTimeout(function(){ window.location.href = 'index.php'; }, 15000); // pindah page stlh 60 detik
+                setTimeout(function(){ window.location.href = 'index.php'; }, <?php echo $setup['jeda_page'] * 1000; ?>); // pindah page ke awal
             }
         </script>
 
