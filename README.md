@@ -20,9 +20,9 @@ mohon doanya diberikan kemudahan, kesehatan dan kesempatan untuk menyelesaikan u
 source code adalah tampilan web, diakses lewat browser, sehingga perlu diinstal browser dahulu di TV Android
 (aslinya saya pakai aplikasi Android dgn webview yg mengakses langsung ke webbased ini)
 
-**CATATAN :*  
-Jangan anggap resolusi TV ANdroid lebih tinggi dari komputer/laptop,   
-(meskipun ukuran layarnya lebih besar, justru resolusinya jauh lebih rendah, sehingga tampilan yg ada di TV terlihat besar).  
+**CATATAN :**  
+Jangan anggap resolusi TV Android lebih tinggi dari komputer/laptop,   
+(meskipun ukuran layarnya lebih besar, tapi resolusinya lebih rendah, sehingga tampilan yg ada di TV terlihat besar).  
 Sehingga perlu penyesuaian terhadap tampilan browser agar terlihat bagus di monitor TV Android.  
 
 ![image](https://user-images.githubusercontent.com/7757976/222020955-d8aed4b3-40ae-4f17-b34d-746807a6c1fa.png)
