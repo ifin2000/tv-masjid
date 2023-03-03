@@ -22,6 +22,8 @@ Pengaturan yg bisa dilakukan antara lain :
 - Setup Awal Ramadhan (untuk Count-Down awal Ramadhan)
 - Setting halaman mana saja yg ditampilkan dan mana yg tidak perlu  
 
+Sedangkan untuk entry data ustadz/khotib, jadwal imam, jadwal kajian rutin diisikan lewat menu Dakwah Rutin  
+
 Aplikasi ini adalah berbasis web, diakses lewat browser, sehingga perlu diinstal browser dahulu di TV Android  
 (aslinya saya pakai aplikasi Android dgn webview yg mengakses langsung ke webbased ini)
 
