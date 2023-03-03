@@ -36,8 +36,6 @@ Sehingga perlu penyesuaian terhadap tampilan browser agar terlihat bagus di moni
 
 ![image](https://user-images.githubusercontent.com/7757976/222021636-b68e6c9e-446b-4a10-a621-27bbe3cc866b.png)
 
-![image](https://user-images.githubusercontent.com/7757976/222021717-8b09c64e-62ad-4704-be92-fdae80f28471.png)
-
 ![image](https://user-images.githubusercontent.com/7757976/222021859-fa97c4cf-5714-4e1c-b326-42e774b47fdf.png)
 
 ![image](https://user-images.githubusercontent.com/7757976/222021774-458760ce-6612-431e-8b60-7467a99e52f3.png)
